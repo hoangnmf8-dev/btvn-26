@@ -16,31 +16,34 @@ const escapeHTML = (value) => {
 };
 
 document.addEventListener("contextmenu", (e) => {
-  if (!e.target.matches(".content")) return;
-  e.preventDefault();
-  const viewPortWidth = document.documentElement.clientWidth;
-  const viewPortHeight = document.documentElement.clientHeight;
-  const contextMenuWidth = +window.getComputedStyle(menu).width.replace("px", "");
-  const contextMenuHeight = +window.getComputedStyle(menu).height.replace("px", "");
-  let topContextMenu = 0;
-  let leftContextMenu = 0;
+  if (e.target.matches(".content")) {
+    e.preventDefault();
+    const viewPortWidth = document.documentElement.clientWidth;
+    const viewPortHeight = document.documentElement.clientHeight;
+    const contextMenuWidth = +window.getComputedStyle(menu).width.replace("px", "");
+    const contextMenuHeight = +window.getComputedStyle(menu).height.replace("px", "");
+    let topContextMenu = 0;
+    let leftContextMenu = 0;
+    
+    if(e.clientY + contextMenuHeight > viewPortHeight) {
+      topContextMenu = e.pageY - contextMenuHeight;
+    } else {
+      topContextMenu = e.pageY;
+    }
   
-  if(e.clientY + contextMenuHeight > viewPortHeight) {
-    topContextMenu = e.pageY - contextMenuHeight;
-  } else {
-    topContextMenu = e.pageY;
+    if(e.clientX + contextMenuWidth > viewPortWidth) {
+      leftContextMenu = e.pageX - contextMenuWidth;
+    } else {
+      leftContextMenu = e.pageX;
+    }
+    
+    menu.style.top = `${topContextMenu}px`;
+    menu.style.left = `${leftContextMenu}px`;
+    menu.classList.replace("hidden", "inline-block");
+    currentItem = e.target.parentNode;
   }
 
-  if(e.clientX + contextMenuWidth > viewPortWidth) {
-    leftContextMenu = e.pageX - contextMenuWidth;
-  } else {
-    leftContextMenu = e.pageX;
-  }
-  
-  menu.style.top = `${topContextMenu}px`;
-  menu.style.left = `${leftContextMenu}px`;
-  menu.classList.replace("hidden", "inline-block");
-  currentItem = e.target.parentNode;
+  if(e.target.closest(".menu")) e.preventDefault();
 });
 
 document.addEventListener("click", (e) => {
