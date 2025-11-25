@@ -1,0 +1,5 @@
+- Chức năng chọn 1 hay nhiều phần tử, bỏ chọn bằng chuột trái.
+- Chức năng di chuyển lên, xuống phần tử.
+- Chức năng sao chép 1 hay nhiều phần tử lên hoặc xuống bằng tổ hợp phím Alt + Shift + Arrow down(up).
+- Chức năng hiển thị context menu, modal, form, đổi tên, xóa phần tử (xử lý thêm hiển thị khi sát lề dưới hoặc lề phải của viewport).
+- Chức năng đóng modal, form, context menu bằng chuột trái hoặc esc.
