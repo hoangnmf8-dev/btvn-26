@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Context menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      .item {
+        @apply flex justify-evenly py-5 rounded-md max-w-[400px] bg-blue-300 shadow-md;
+      }
+
+      .btn {
+        @apply px-5 py-3 text-white font-[500] rounded-lg shadow-md cursor-pointer hover:opacity-60 max-w-[200px] text-nowrap text-ellipsis overflow-hidden; 
+      }
+
+      .active {
+        @apply border-2 border-solid border-orange-400;
+      }
+    </style>
+  </head>
+  <body>
+    <ul
+      class="flex flex-col justify-center gap-[50px] border-1 border-red-600 m-5 py-5 pl-[100px]"
+    >
+      <li class="item">
+        <button class="btn content bg-cyan-400">Item 1</button>
+        <button class="btn up bg-green-600">Up</button>
+        <button class="btn down bg-red-600">Down</button>
+      </li>
+      <li class="item">
+        <button class="btn content bg-cyan-400">Item 2</button>
+        <button class="btn up bg-green-600">Up</button>
+        <button class="btn down bg-red-600">Down</button>
+      </li>
+      <li class="item">
+        <button class="btn content bg-cyan-400">Item 3</button>
+        <button class="btn up bg-green-600">Up</button>
+        <button class="btn down bg-red-600">Down</button>
+      </li>
+      <li class="item">
+        <button class="btn content bg-cyan-400">Item 4</button>
+        <button class="btn up bg-green-600">Up</button>
+        <button class="btn down bg-red-600">Down</button>
+      </li>
+      <li class="item">
+        <button class="btn content bg-cyan-400">Item 5</button>
+        <button class="btn up bg-green-600">Up</button>
+        <button class="btn down bg-red-600">Down</button>
+      </li>
+    </ul>
+
+    <div
+      class="menu absolute top-0 left-0 w-[120px] h-[96px] bg-gray-100 rounded-sm shadow-[1px_1px_10px_rgba(0,0,0,0.1)] cursor-pointer overflow-hidden hidden"
+    >
+      <p
+        class="menu-update-name p-3 border-b-1 border-gray-300 hover:bg-gray-400"
+      >
+        Update name
+      </p>
+      <p class="menu-delete p-3 hover:bg-gray-400">Delete</p>
+    </div>
+
+    <div class="modal fixed inset-0 bg-[rgba(0,0,0,0.3)] hidden"></div>
+
+    <form
+      class="form fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 gap-2 w-[400px] py-2 px-4 bg-blue-300 rounded-sm hidden"
+    >
+      <h1 class="font-bold text-center text-[25px] mb-5">Update name</h1>
+      <div class="input-group flex gap-2">
+        <input
+          class="flex-1 border-1 border-blue-400 px-4 py-1 rounded-sm bg-white outline-blue-400"
+          type="text"
+        />
+        <button class="btn bg-blue-600">Save</button>
+      </div>
+    </form>
+    <script src="./main.js"></script>
+  </body>
+</html>
